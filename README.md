@@ -39,53 +39,6 @@ O projeto foi construído com as seguintes ferramentas e tecnologias:
 
 ---
 
-## 🚀 Como Executar
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/melchisedek/portfolio.git
-   cd portfolio
-   ```
-
-2. **Instale as dependências**
-   ```bash
-   npm install
-   ```
-
-3. **Configure as variáveis de ambiente**
-   
-   Crie um arquivo `.env` na raiz do projeto:
-   ```env
-   EMAIL_USER=seu-email@gmail.com
-   EMAIL_PASS=sua-senha-de-app
-   PORT=3000
-   NODE_ENV=development
-   ```
-
-4. **Execute o servidor**
-   ```bash
-   # Desenvolvimento
-   npm run dev
-   
-   # Produção
-   npm start
-   ```
-
-5. **Acesse o portfólio**
-   
-   Abra seu navegador em `http://localhost:3000`
-
----
-
-## 📱 PWA
-
-O portfólio é um Progressive Web App (PWA) que pode ser instalado:
-
-- **Chrome/Edge**: Clique no ícone de instalação na barra de endereços
-- **Firefox**: Clique no ícone "+" na barra de endereços
-- **Mobile**: Adicione à tela inicial
-
----
 
 ## 🤝 Contato
 
@@ -93,7 +46,7 @@ Para mais informações ou para discutir oportunidades, por favor, entre em cont
 
 [![Email](https://img.shields.io/badge/Email-melchisedeksl@gmail.com-blue?style=for-the-badge&logo=gmail)](mailto:melchisedeksl@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-melchisedek-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/melchisedek)
-[![GitHub](https://img.shields.io/badge/GitHub-melchisedek-black?style=for-the-badge&logo=github)](https://github.com/melchisedek)
+[![GitHub](https://img.shields.io/badge/GitHub-melky-yc-black?style=for-the-badge&logo=github)](https://github.com/melky-yc)
 
 ---
 
@@ -105,6 +58,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 <div align="center">
 
-**Desenvolvido com ❤️ por [Melchisedek Lima](https://github.com/melchisedek)**
+**Desenvolvido por [Melchisedek Lima](https://github.com/melky-yc)**
 
 </div>

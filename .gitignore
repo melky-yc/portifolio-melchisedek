@@ -38,3 +38,7 @@ Desktop.ini
 dist/
 build/
 
+#Automação
+
+fix_cv_name.py
+

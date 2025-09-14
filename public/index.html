@@ -27,8 +27,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon"
@@ -53,22 +56,101 @@
                     <li><a href="#sobre" class="nav-link">Sobre Mim</a></li>
                     <li><a href="#projetos" class="nav-link">Projetos</a></li>
                     <li><a href="#stacks" class="nav-link">Stacks</a></li>
+                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" aria-label="Alternar tema" title="Alternar entre modo claro e escuro">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main id="main-content" role="main">
         <section id="inicio" class="inicio" aria-labelledby="hero-title">
+            <!-- Partículas animadas de fundo -->
+            <div class="particles-container">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            
+            <!-- Ícones flutuantes das tecnologias -->
+            <div class="floating-icons">
+                <i class="fab fa-html5" data-tooltip="HTML5"></i>
+                <i class="fab fa-css3-alt" data-tooltip="CSS3"></i>
+                <i class="fab fa-js-square" data-tooltip="JavaScript"></i>
+                <i class="fab fa-react" data-tooltip="React"></i>
+                <i class="fab fa-node-js" data-tooltip="Node.js"></i>
+                <i class="fab fa-python" data-tooltip="Python"></i>
+            </div>
+            
             <div class="container">
-                <h1 id="hero-title">Melchisedek Lima</h1>
-                <h2 class="subtitle">Front-end Developer & UI/UX Designer</h2>
-                <p class="description">Crio interfaces modernas e responsivas, unindo design intuitivo e código
-                    eficiente para entregar experiências digitais funcionais e atraentes.</p>
-                <div class="cta-buttons">
-                    <a href="#projetos" class="btn btn-primary" aria-label="Ver meus projetos">Ver Projetos</a>
-                    <a href="#contato" class="btn btn-secondary" aria-label="Entrar em contato">Entre em Contato</a>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 id="hero-title" class="hero-title">
+                            <span class="title-line">Melchisedek</span>
+                            <span class="title-line highlight">Lima</span>
+                        </h1>
+                        <h2 class="subtitle">
+                            <span class="subtitle-text">Front-end Developer</span>
+                            <span class="subtitle-separator">&</span>
+                            <span class="subtitle-text">UI/UX Designer</span>
+                        </h2>
+                        <p class="description">Crio interfaces modernas e responsivas, unindo design intuitivo e código
+                            eficiente para entregar experiências digitais funcionais e atraentes.</p>
+                        
+                        <!-- Estatísticas rápidas -->
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="15">0</span>
+                                <span class="stat-label">Projetos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="8">0</span>
+                                <span class="stat-label">Tecnologias</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="2">0</span>
+                                <span class="stat-label">Anos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="cta-buttons">
+                            <a href="#projetos" class="btn btn-primary" aria-label="Ver meus projetos">
+                                <i class="fas fa-code"></i>
+                                Ver Projetos
+                            </a>
+                            <a href="#contato" class="btn btn-secondary" aria-label="Entrar em contato">
+                                <i class="fas fa-envelope"></i>
+                                Entre em Contato
+                            </a>
+                            <a href="#" class="btn btn-outline" aria-label="Download do currículo">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Avatar/Foto placeholder -->
+                    <div class="hero-image">
+                        <div class="avatar-container">
+                            <div class="avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="avatar-ring"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
         </section>
@@ -86,15 +168,75 @@
                             tornem a interação com a tecnologia mais simples e agradável.</p>
                         <p>Meu objetivo é me tornar um Front-end Developer e UI/UX Designer, entregando soluções
                             digitais que unam inovação, funcionalidade e experiência premium.</p>
-                        <div class="info-blocks">
-                            <div class="info-block">
-                                <h4>Formação & Objetivos</h4>
-                                <ul>
-                                    <li>Graduando em Ciência da Computação</li>
-                                    <li>Especialização em Desenvolvimento Web</li>
-                                    <li>Foco em UX/UI Design e Acessibilidade</li>
-                                    <li>Estudos em Prototipação e Design Systems</li>
-                                </ul>
+                    </div>
+                    
+                    <!-- Timeline de experiência -->
+                    <div class="timeline-container scroll-reveal">
+                        <h3 class="timeline-title">Minha Jornada</h3>
+                        <div class="timeline">
+                            <div class="timeline-item scroll-reveal-left">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2024 - Atual</h4>
+                                    <h5>Foco em Front-end & UI/UX</h5>
+                                    <p>Especialização em React, TypeScript e design de interfaces modernas</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item scroll-reveal-right">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2023</h4>
+                                    <h5>Início dos Estudos</h5>
+                                    <p>Começou a graduação em Ciência da Computação e primeiros projetos web</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item scroll-reveal-left">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2022</h4>
+                                    <h5>Descoberta da Programação</h5>
+                                    <p>Primeiro contato com HTML, CSS e JavaScript</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Estatísticas pessoais -->
+                    <div class="personal-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Ciência da Computação</h4>
+                                <p>Graduação em andamento</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>8+ Tecnologias</h4>
+                                <p>Dominadas e em constante evolução</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>15+ Projetos</h4>
+                                <p>Desenvolvidos e em produção</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Colaboração</h4>
+                                <p>Trabalho em equipe e comunicação</p>
                             </div>
                         </div>
                     </div>
@@ -105,72 +247,121 @@
         <section id="projetos" class="section-projetos" aria-labelledby="projetos-title">
             <div class="container">
                 <h2 id="projetos-title" class="section-title">Meus <span class="highlight">Projetos</span></h2>
+                
+                <!-- Filtros de projetos -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="frontend">Front-end</button>
+                    <button class="filter-btn" data-filter="fullstack">Full-stack</button>
+                    <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                </div>
+                
                 <div class="grid-projetos">
-                    <article class="project-card">
-                        <h3> Nome do Projeto </h3>
-                        <p class="project-desc">Descrição do Projeto</p>
-                        <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
+                    <article class="project-card scroll-reveal" data-category="frontend">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-status">
+                                    <span class="status-badge completed">Concluído</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/melky-yc" class="btn-link"
-                                aria-label="Ver código do projeto ...">
-                                <i class="fas fa-code" aria-hidden="true"></i> Código
-                            </a>
-                            <a href="#" class="btn-link"
-                                aria-label="Ver demonstração do projeto ...">
-                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <h3>Nome do Projeto</h3>
-                        <p class="project-desc"> Explicação do Projeto</p>
-                        <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/melky-yc" class="btn-link"
-                                aria-label="Ver código do projeto ...">
-                                <i class="fas fa-code" aria-hidden="true"></i> Código
-                            </a>
-                            <a href="#" class="btn-link"
-                                aria-label="Ver demonstração do projeto ...">
-                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
-                            </a>
+                        <div class="project-content">
+                            <h3>E-commerce Moderno</h3>
+                            <p class="project-desc">Plataforma de e-commerce responsiva com carrinho de compras, sistema de pagamento e painel administrativo.</p>
+                            <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
+                                <span class="tag" role="listitem">React</span>
+                                <span class="tag" role="listitem">TypeScript</span>
+                                <span class="tag" role="listitem">Node.js</span>
+                                <span class="tag" role="listitem">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/melky-yc" class="btn-link"
+                                    aria-label="Ver código do projeto E-commerce Moderno">
+                                    <i class="fas fa-code" aria-hidden="true"></i> Código
+                                </a>
+                                <a href="#" class="btn-link"
+                                    aria-label="Ver demonstração do projeto E-commerce Moderno">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+                                </a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="project-card">
-                        <h3>Nome do Projeto</h3>
-                        <p class="project-desc">Explicação do Projeto</p>
-                        <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
-                            <span class="tag" role="listitem">Stacks</span>
+                    <article class="project-card scroll-reveal" data-category="ui-ux">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-status">
+                                    <span class="status-badge in-progress">Em Desenvolvimento</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/melky-yc" class="btn-link"
-                                aria-label="Ver código do projeto ...">
-                                <i class="fas fa-code" aria-hidden="true"></i> Código
-                            </a>
-                            <a href="#" class="btn-link"
-                                aria-label="Ver demonstração do projeto ...">
-                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
-                            </a>
+                        <div class="project-content">
+                            <h3>Design System</h3>
+                            <p class="project-desc">Sistema de design completo com componentes reutilizáveis, guia de estilo e documentação interativa.</p>
+                            <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
+                                <span class="tag" role="listitem">Figma</span>
+                                <span class="tag" role="listitem">Storybook</span>
+                                <span class="tag" role="listitem">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/melky-yc" class="btn-link"
+                                    aria-label="Ver código do projeto Design System">
+                                    <i class="fas fa-code" aria-hidden="true"></i> Código
+                                </a>
+                                <a href="#" class="btn-link"
+                                    aria-label="Ver demonstração do projeto Design System">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card scroll-reveal" data-category="fullstack">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-status">
+                                    <span class="status-badge completed">Concluído</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>API RESTful</h3>
+                            <p class="project-desc">API completa com autenticação JWT, CRUD operations e documentação interativa usando Swagger.</p>
+                            <div class="tech-tags" role="list" aria-label="Tecnologias utilizadas">
+                                <span class="tag" role="listitem">Node.js</span>
+                                <span class="tag" role="listitem">Express</span>
+                                <span class="tag" role="listitem">PostgreSQL</span>
+                                <span class="tag" role="listitem">JWT</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/melky-yc" class="btn-link"
+                                    aria-label="Ver código do projeto API RESTful">
+                                    <i class="fas fa-code" aria-hidden="true"></i> Código
+                                </a>
+                                <a href="#" class="btn-link"
+                                    aria-label="Ver demonstração do projeto API RESTful">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+                                </a>
+                            </div>
                         </div>
                     </article>
                 </div>
                 <div class="see-more">
                     <a href="https://github.com/melky-yc" class="btn-more"
-                        aria-label="Ver todos os projetos no GitHub">Ver Todos no GitHub</a>
+                        aria-label="Ver todos os projetos no GitHub">
+                        <i class="fab fa-github"></i>
+                        Ver Todos no GitHub
+                    </a>
                 </div>
             </div>
         </section>
@@ -227,6 +418,89 @@
             </div>
         </section>
 
+        <section id="habilidades" class="section-habilidades" aria-labelledby="habilidades-title">
+            <div class="container">
+                <h2 id="habilidades-title" class="section-title">Habilidades <span class="highlight">Soft</span></h2>
+                <p class="section-subtitle">Além das competências técnicas, desenvolvo habilidades interpessoais essenciais para o sucesso profissional.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">Comunicação</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fas fa-comments"></i>
+                                <span>Comunicação Efetiva</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-presentation"></i>
+                                <span>Apresentações</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-language"></i>
+                                <span>Inglês Intermediário</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Liderança</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fas fa-users-cog"></i>
+                                <span>Gestão de Equipe</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Tomada de Decisão</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Planejamento Estratégico</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Aprendizado</h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fas fa-brain"></i>
+                                <span>Pensamento Crítico</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <span>Resolução de Problemas</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Aprendizado Contínuo</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Certificações</h3>
+                        <div class="certifications">
+                            <div class="cert-item">
+                                <i class="fab fa-google"></i>
+                                <div class="cert-info">
+                                    <h4>Google UX Design</h4>
+                                    <p>Coursera - 2024</p>
+                                </div>
+                            </div>
+                            <div class="cert-item">
+                                <i class="fab fa-microsoft"></i>
+                                <div class="cert-info">
+                                    <h4>Azure Fundamentals</h4>
+                                    <p>Microsoft - 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contato" class="section-contato" aria-labelledby="contato-title">
             <div class="container">
                 <h2 id="contato-title" class="section-title">Entre em <span class="highlight">Contato</span></h2>
@@ -236,6 +510,23 @@
                         <p>Estou sempre aberto a novas oportunidades, colaborações e conversas interessantes. Se você
                             tem um projeto em mente, quer discutir tecnologia ou apenas trocar ideias, não hesite em
                             entrar em contato!</p>
+                        
+                        <!-- Botões de contato rápido -->
+                        <div class="quick-contact">
+                            <a href="https://wa.me/5511999999999" class="quick-btn whatsapp" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://calendly.com/melchisedek" class="quick-btn calendly" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-calendar"></i>
+                                <span>Agendar Reunião</span>
+                            </a>
+                            <a href="mailto:melchisedek@gmail.com" class="quick-btn email">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email Direto</span>
+                            </a>
+                        </div>
+                        
                         <div class="social-links">
                             <a href="https://github.com/melky-yc" class="social-link"
                                 aria-label="Visitar perfil no GitHub" target="_blank" rel="noopener noreferrer">
@@ -245,8 +536,9 @@
                                 aria-label="Visitar perfil no LinkedIn" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
                             </a>
-                            <a href="mailto:melchisedek@gmail.com" class="social-link" aria-label="Enviar email">
-                                <i class="fas fa-envelope" aria-hidden="true"></i> Email
+                            <a href="https://twitter.com/melchisedek" class="social-link"
+                                aria-label="Visitar perfil no Twitter" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-twitter" aria-hidden="true"></i> Twitter
                             </a>
                         </div>
                     </div>
@@ -299,6 +591,16 @@
                 código.</p>
         </div>
     </footer>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5511999999999" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botão de voltar ao topo -->
+    <button class="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <!-- Scripts -->
     <script src="js/script.js" defer></script>

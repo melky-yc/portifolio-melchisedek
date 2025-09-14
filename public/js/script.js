@@ -27,13 +27,20 @@ const CONFIG = {
         progressBars: '.progress-fill',
         contactForm: '.contact-form',
         successModal: '#success-modal',
-        closeButton: '.close-button'
+        closeButton: '.close-button',
+        themeToggle: '.theme-toggle',
+        projectFilters: '.filter-btn',
+        projectCards: '.project-card',
+        backToTop: '.back-to-top',
+        statNumbers: '.stat-number',
+        scrollReveal: '.scroll-reveal'
     },
     classes: {
         active: 'active',
         visible: 'visible',
         loading: 'loading',
-        error: 'error'
+        error: 'error',
+        revealed: 'revealed'
     }
 };
 
@@ -656,6 +663,183 @@ const NotificationManager = {
 };
 
 // ========================================
+// GERENCIADOR DE TEMA
+// ========================================
+
+const ThemeManager = {
+    init() {
+        this.setupThemeToggle();
+        this.loadSavedTheme();
+    },
+
+    setupThemeToggle() {
+        const themeToggle = document.querySelector(CONFIG.selectors.themeToggle);
+        if (!themeToggle) {
+            return;
+        }
+
+        themeToggle.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+    },
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Atualizar ícone do toggle
+        const icon = document.querySelector(CONFIG.selectors.themeToggle + ' i');
+        if (icon) {
+            icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    },
+
+    loadSavedTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        const icon = document.querySelector(CONFIG.selectors.themeToggle + ' i');
+        if (icon) {
+            icon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    }
+};
+
+// ========================================
+// GERENCIADOR DE FILTROS DE PROJETOS
+// ========================================
+
+const ProjectFilterManager = {
+    init() {
+        this.setupFilters();
+    },
+
+    setupFilters() {
+        const filterButtons = document.querySelectorAll(CONFIG.selectors.projectFilters);
+        const projectCards = document.querySelectorAll(CONFIG.selectors.projectCards);
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Atualizar botões ativos
+                filterButtons.forEach(btn => btn.classList.remove(CONFIG.classes.active));
+                button.classList.add(CONFIG.classes.active);
+
+                // Filtrar projetos
+                this.filterProjects(projectCards, filter);
+            });
+        });
+    },
+
+    filterProjects(cards, filter) {
+        cards.forEach(card => {
+            const category = card.getAttribute('data-category');
+
+            if (filter === 'all' || category === filter) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeInUp 0.5s ease forwards';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+};
+
+// ========================================
+// GERENCIADOR DE ANIMAÇÕES DE SCROLL
+// ========================================
+
+const ScrollAnimationManager = {
+    init() {
+        this.setupScrollReveal();
+        this.setupBackToTop();
+        this.setupCounterAnimations();
+    },
+
+    setupScrollReveal() {
+        const elements = document.querySelectorAll(CONFIG.selectors.scrollReveal);
+
+        if (!('IntersectionObserver' in window)) {
+            elements.forEach(el => el.classList.add(CONFIG.classes.revealed));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(CONFIG.classes.revealed);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elements.forEach(el => observer.observe(el));
+    },
+
+    setupBackToTop() {
+        const backToTopBtn = document.querySelector(CONFIG.selectors.backToTop);
+        if (!backToTopBtn) {
+            return;
+        }
+
+        window.addEventListener('scroll', Utils.throttle(() => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add(CONFIG.classes.visible);
+            } else {
+                backToTopBtn.classList.remove(CONFIG.classes.visible);
+            }
+        }, 100));
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    },
+
+    setupCounterAnimations() {
+        const counters = document.querySelectorAll(CONFIG.selectors.statNumbers);
+
+        if (!('IntersectionObserver' in window)) {
+            counters.forEach(counter => this.animateCounter(counter));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => observer.observe(counter));
+    },
+
+    animateCounter(element) {
+        const target = parseInt(element.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+        }, 16);
+    }
+};
+
+// ========================================
 // INICIALIZAÇÃO PRINCIPAL
 // ========================================
 
@@ -680,6 +864,9 @@ const App = {
         AnimationManager.init();
         FormManager.init();
         ModalManager.init();
+        ThemeManager.init();
+        ProjectFilterManager.init();
+        ScrollAnimationManager.init();
     },
 
     setupGlobalEventListeners() {

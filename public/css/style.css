@@ -892,7 +892,7 @@ section {
     font-size: 0.8rem;
 }
 
-/* Timeline */
+/* Timeline
 .timeline-container {
     margin-top: var(--spacing-xxl);
 }
@@ -998,7 +998,7 @@ section {
     color: var(--light-grey);
     font-size: 0.9rem;
     line-height: 1.6;
-}
+} */
 
 /* Estatísticas pessoais */
 .personal-stats {

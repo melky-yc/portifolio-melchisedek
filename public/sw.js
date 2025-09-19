@@ -16,8 +16,15 @@ const STATIC_ASSETS = [
     '/css/style.css',
     '/js/script.js',
     '/manifest.json',
+    '/img/melchisedek.webp',
     'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
+];
+
+// Recursos para cache dinâmico (imagens de projetos)
+const DYNAMIC_ASSETS = [
+    '/img/projects/',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/'
 ];
 
 // Instalar Service Worker
@@ -73,7 +80,7 @@ self.addEventListener('fetch', (event) => {
         if (url.origin === location.origin) {
             // Recursos locais - Cache First
             event.respondWith(cacheFirst(request));
-        } else if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'cdnjs.cloudflare.com') {
+        } else if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'cdnjs.cloudflare.com' || url.hostname === 'cdn.jsdelivr.net') {
             // Recursos externos - Stale While Revalidate
             event.respondWith(staleWhileRevalidate(request));
         } else {

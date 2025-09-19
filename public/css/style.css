@@ -549,6 +549,7 @@ h1, h2, h3, h4, h5, h6 {
     animation: fadeInDown 1s ease-out;
     margin-bottom: var(--spacing-sm);
     line-height: 1.1;
+    will-change: transform, opacity;
 }
 
 .title-line {
@@ -568,6 +569,7 @@ h1, h2, h3, h4, h5, h6 {
     animation: fadeInUp 1s ease-out 0.2s both;
     margin-bottom: var(--spacing-md);
     font-weight: 300;
+    will-change: transform, opacity;
 }
 
 .subtitle-text {
@@ -587,6 +589,7 @@ h1, h2, h3, h4, h5, h6 {
     animation: fadeInUp 1s ease-out 0.4s both;
     margin-bottom: var(--spacing-xl);
     line-height: 1.7;
+    will-change: transform, opacity;
 }
 
 /* Estatísticas do hero */
@@ -1126,10 +1129,41 @@ section {
     justify-content: center;
 }
 
+.project-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+    will-change: transform;
+}
+
+.project-card:hover .project-screenshot {
+    transform: scale(1.05);
+}
+
 .project-placeholder {
     font-size: 3rem;
     color: var(--accent-blue);
     opacity: 0.7;
+}
+
+/* Lazy loading states */
+.lazy {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.lazy.loaded {
+    opacity: 1;
+}
+
+/* Loading skeleton */
+.project-skeleton {
+    background: linear-gradient(90deg, var(--navy) 25%, var(--card-bg) 50%, var(--navy) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    height: 100%;
+    width: 100%;
 }
 
 .project-overlay {
@@ -1866,6 +1900,64 @@ footer {
 }
 
 /* ========================================
+   ACESSIBILIDADE E NAVEGAÇÃO POR TECLADO
+   ======================================== */
+
+.keyboard-navigation *:focus {
+    outline: 2px solid var(--accent-blue) !important;
+    outline-offset: 2px !important;
+}
+
+.keyboard-navigation .btn:focus,
+.keyboard-navigation .nav-link:focus,
+.keyboard-navigation .filter-btn:focus {
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.3) !important;
+}
+
+/* Melhorar contraste para foco */
+.keyboard-navigation .project-card:focus-within {
+    border-color: var(--accent-blue) !important;
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.3) !important;
+}
+
+/* Reduzir movimento para usuários sensíveis */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* Melhorar visibilidade de elementos interativos */
+.btn:focus-visible,
+.nav-link:focus-visible,
+.filter-btn:focus-visible,
+.project-card:focus-visible {
+    outline: 2px solid var(--accent-orange) !important;
+    outline-offset: 2px !important;
+}
+
+/* Estados de hover e focus mais claros */
+@media (hover: hover) {
+    .btn:hover,
+    .nav-link:hover,
+    .filter-btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Fallback para dispositivos touch */
+@media (hover: none) {
+    .btn:active,
+    .nav-link:active,
+    .filter-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ========================================
    BOTÕES FLUTUANTES
    ======================================== */
 
@@ -1981,6 +2073,51 @@ footer {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     animation: shimmer 1.5s infinite;
+}
+
+/* Skeleton loading para cards */
+.skeleton-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-line {
+    height: 1rem;
+    background: linear-gradient(90deg, var(--navy) 25%, var(--card-bg) 50%, var(--navy) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-line.short {
+    width: 60%;
+}
+
+.skeleton-line.medium {
+    width: 80%;
+}
+
+.skeleton-line.long {
+    width: 100%;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--navy);
+    border-top: 4px solid var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* ========================================

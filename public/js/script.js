@@ -150,20 +150,20 @@ const StateManager = {
 // ========================================
 
 const PerformanceManager = {
-    // Lazy loading de imagens
+    // Lazy loading de imagens otimizado
     initLazyLoading() {
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazy');
-                        }
+                        this.loadImage(img);
                         observer.unobserve(img);
                     }
                 });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
             });
 
             document.querySelectorAll('img[data-src]').forEach(img => {
@@ -172,12 +172,32 @@ const PerformanceManager = {
         } else {
             // Fallback para navegadores antigos
             document.querySelectorAll('img[data-src]').forEach(img => {
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                }
+                this.loadImage(img);
             });
         }
+    },
+
+    // Carregar imagem com tratamento de erro
+    loadImage(img) {
+        if (!img.dataset.src) {
+            return;
+        }
+
+        // Mostrar skeleton loading
+        img.classList.add('loading');
+
+        const tempImg = new Image();
+        tempImg.onload = () => {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy', 'loading');
+            img.classList.add('loaded');
+        };
+        tempImg.onerror = () => {
+            img.classList.remove('lazy', 'loading');
+            // Manter placeholder em caso de erro
+            console.warn('Erro ao carregar imagem:', img.dataset.src);
+        };
+        tempImg.src = img.dataset.src;
     },
 
     // Preload de recursos críticos
@@ -383,7 +403,7 @@ const FormManager = {
             }
             break;
         case 'message':
-            if (value.length < 10) {
+            if (value.length < 5) {
                 isValid = false;
                 errorMessage = 'Mensagem deve ter pelo menos 10 caracteres';
             }
@@ -482,6 +502,7 @@ const FormManager = {
                 ModalManager.showModal();
                 form.reset();
                 NotificationManager.showNotification('Mensagem enviada com sucesso!', 'success');
+                AccessibilityManager.announceToScreenReader('Mensagem enviada com sucesso!');
             } else {
                 const errorText = await response.text();
                 throw new Error(errorText || 'Erro no servidor');
@@ -490,6 +511,7 @@ const FormManager = {
         } catch (error) {
             console.error('Erro ao enviar formulário:', error);
             NotificationManager.showNotification('Erro ao enviar mensagem. Tente novamente.', 'error');
+            AccessibilityManager.announceToScreenReader('Erro ao enviar mensagem. Tente novamente.');
         } finally {
             this.hideLoadingState(submitButton, originalText);
             StateManager.setState({ isFormSubmitting: false });
@@ -750,6 +772,119 @@ const ProjectFilterManager = {
 };
 
 // ========================================
+// GERENCIADOR DE ACESSIBILIDADE
+// ========================================
+
+const AccessibilityManager = {
+    init() {
+        this.setupKeyboardNavigation();
+        this.setupFocusManagement();
+        this.setupAriaLiveRegions();
+        this.setupReducedMotion();
+    },
+
+    setupKeyboardNavigation() {
+        // Navegação por teclado melhorada
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Skip links
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.classList.contains('skip-link')) {
+                e.target.click();
+            }
+        });
+    },
+
+    setupFocusManagement() {
+        // Gerenciar foco em modais
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    ModalManager.hideModal();
+                }
+            });
+        });
+
+        // Focus trap para modais
+        this.setupFocusTrap();
+    },
+
+    setupFocusTrap() {
+        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+        const trapFocus = (element) => {
+            const focusableContent = element.querySelectorAll(focusableElements);
+            const firstFocusableElement = focusableContent[0];
+            const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        };
+
+        document.querySelectorAll('.modal').forEach(trapFocus);
+    },
+
+    setupAriaLiveRegions() {
+        // Criar região live para atualizações dinâmicas
+        if (!document.getElementById('aria-live-region')) {
+            const liveRegion = document.createElement('div');
+            liveRegion.id = 'aria-live-region';
+            liveRegion.setAttribute('aria-live', 'polite');
+            liveRegion.setAttribute('aria-atomic', 'true');
+            liveRegion.className = 'sr-only';
+            document.body.appendChild(liveRegion);
+        }
+    },
+
+    setupReducedMotion() {
+        // Respeitar preferência de movimento reduzido
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.classList.add('reduced-motion');
+        }
+
+        window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+            if (e.matches) {
+                document.documentElement.classList.add('reduced-motion');
+            } else {
+                document.documentElement.classList.remove('reduced-motion');
+            }
+        });
+    },
+
+    announceToScreenReader(message) {
+        const liveRegion = document.getElementById('aria-live-region');
+        if (liveRegion) {
+            liveRegion.textContent = message;
+            setTimeout(() => {
+                liveRegion.textContent = '';
+            }, 1000);
+        }
+    }
+};
+
+// ========================================
 // GERENCIADOR DE ANIMAÇÕES DE SCROLL
 // ========================================
 
@@ -867,6 +1002,8 @@ const App = {
         ThemeManager.init();
         ProjectFilterManager.init();
         ScrollAnimationManager.init();
+        PerformanceManager.initLazyLoading();
+        AccessibilityManager.init();
     },
 
     setupGlobalEventListeners() {

@@ -334,19 +334,33 @@ const AnimationManager = {
     },
 
     setupScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.project-card, .stack-category, .info-block');
+        const animatedElements = document.querySelectorAll(
+            '.project-card, .stack-category, .skill-category, .stat-card, .info-block'
+        );
 
         // Verificar se IntersectionObserver está disponível
         if (!('IntersectionObserver' in window)) {
             // Fallback: adicionar classe diretamente
             animatedElements.forEach(element => {
-                element.classList.add('fade-in-up');
+                element.classList.add('revealed');
             });
             return;
         }
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
         animatedElements.forEach(element => {
-            Utils.animateOnScroll(element, 'fade-in-up');
+            observer.observe(element);
         });
     }
 };
@@ -897,22 +911,37 @@ const ScrollAnimationManager = {
 
     setupScrollReveal() {
         const elements = document.querySelectorAll(CONFIG.selectors.scrollReveal);
+        const sections = document.querySelectorAll('section');
 
         if (!('IntersectionObserver' in window)) {
             elements.forEach(el => el.classList.add(CONFIG.classes.revealed));
+            sections.forEach(section => section.classList.add('visible'));
             return;
         }
 
-        const observer = new IntersectionObserver((entries) => {
+        // Observer para elementos individuais
+        const elementObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add(CONFIG.classes.revealed);
-                    observer.unobserve(entry.target);
+                    elementObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
-        elements.forEach(el => observer.observe(el));
+        elements.forEach(el => elementObserver.observe(el));
+
+        // Observer para seções
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    sectionObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => sectionObserver.observe(section));
     },
 
     setupBackToTop() {

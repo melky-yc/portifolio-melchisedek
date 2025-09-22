@@ -1,19 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/submit_form.js": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 30
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -26,10 +18,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "api/submit_form.js": {
-      "maxDuration": 30
-    }
   }
 }

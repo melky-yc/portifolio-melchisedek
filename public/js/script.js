@@ -279,13 +279,42 @@ const NavigationManager = {
                     const headerHeight = document.querySelector('.header').offsetHeight;
                     const targetPosition = targetElement.offsetTop - headerHeight - 20;
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    // Scroll suave com animação customizada
+                    this.smoothScrollTo(targetPosition, 1000);
                 }
             });
         });
+    },
+
+    // Função para scroll suave customizado
+    smoothScrollTo(targetPosition, duration = 1000) {
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animation(currentTime) {
+            if (startTime === null) {
+                startTime = currentTime;
+            }
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        // Função de easing suave
+        function easeInOutCubic(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) {
+                return c / 2 * t * t * t + b;
+            }
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+        }
+
+        requestAnimationFrame(animation);
     },
 
     setupActiveNavigation() {
@@ -350,13 +379,20 @@ const AnimationManager = {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
+                    // Adicionar delay baseado na posição do elemento
+                    const rect = entry.target.getBoundingClientRect();
+                    const delay = Math.min(rect.top / window.innerHeight * 200, 200);
+
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, delay);
+
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         });
 
         animatedElements.forEach(element => {
@@ -919,27 +955,45 @@ const ScrollAnimationManager = {
             return;
         }
 
-        // Observer para elementos individuais
+        // Observer para elementos individuais com animação progressiva
         const elementObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add(CONFIG.classes.revealed);
+                    const rect = entry.target.getBoundingClientRect();
+                    const delay = Math.min(rect.top / window.innerHeight * 300, 300);
+
+                    setTimeout(() => {
+                        entry.target.classList.add(CONFIG.classes.revealed);
+                    }, delay);
+
                     elementObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        });
 
         elements.forEach(el => elementObserver.observe(el));
 
-        // Observer para seções
+        // Observer para seções com animação mais suave
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    const rect = entry.target.getBoundingClientRect();
+                    const delay = Math.min(rect.top / window.innerHeight * 400, 400);
+
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+
                     sectionObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        }, {
+            threshold: 0.25,
+            rootMargin: '0px 0px -120px 0px'
+        });
 
         sections.forEach(section => sectionObserver.observe(section));
     },

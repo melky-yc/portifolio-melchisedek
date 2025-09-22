@@ -1,0 +1,35 @@
+{
+  "name": "portfolio-melchisedek",
+  "version": "2.0.0",
+  "description": "Portfólio profissional de Melchisedek Lima",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "frontend",
+    "developer",
+    "ui-ux",
+    "melchisedek"
+  ],
+  "author": "Melchisedek Lima",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.7",
+    "validator": "^13.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"Build completed\"",
     "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --ext .js --fix"
+    "lint:fix": "eslint . --ext .js --fix",
+    "vercel-build": "echo \"Build completed for Vercel\""
   },
   "keywords": [
     "portfolio",

@@ -466,6 +466,10 @@ h1, h2, h3, h4, h5, h6 {
         width: 100%;
         max-width: 280px;
     }
+
+    /* .scroll-indicator {
+        display: none;
+    } */
 }
 
 /* ========================================
@@ -810,9 +814,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Indicador de scroll */
-.scroll-indicator {
+/* .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
@@ -837,7 +841,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--accent-blue);
     color: var(--white);
     transform: scale(1.1);
-}
+} */
 
 /* ========================================
    ANIMAÇÕES

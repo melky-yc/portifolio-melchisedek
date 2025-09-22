@@ -1,18 +1,23 @@
 {
   "version": 2,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "api/**/*.js",
+      "use": "@vercel/node@3.0.7"
     },
     {
-      "source": "/(.*)",
-      "destination": "/public/$1"
+      "src": "public/**/*",
+      "use": "@vercel/static@1.0.1"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
     }
   ]
 }

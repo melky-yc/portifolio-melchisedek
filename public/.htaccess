@@ -1,67 +1,56 @@
-# Configuração de Cache para Portfólio - Melchisedek Lima
-# Este arquivo garante que os visitantes sempre vejam a versão mais atual
+# Configuração SEM CACHE - Atualização Imediata
+# Portfólio Melchisedek Lima
 
 # Ativar mod_rewrite
 RewriteEngine On
 
-# Configuração de Cache para diferentes tipos de arquivo
+# DESABILITAR CACHE COMPLETAMENTE
 <IfModule mod_expires.c>
-    ExpiresActive On
-    
-    # HTML - Sempre verificar por atualizações
-    ExpiresByType text/html "access plus 0 seconds"
-    ExpiresByType application/xhtml+xml "access plus 0 seconds"
-    
-    # CSS e JS - Cache curto para permitir atualizações frequentes
-    ExpiresByType text/css "access plus 1 hour"
-    ExpiresByType application/javascript "access plus 1 hour"
-    ExpiresByType text/javascript "access plus 1 hour"
-    
-    # Imagens - Cache moderado
-    ExpiresByType image/jpeg "access plus 1 week"
-    ExpiresByType image/png "access plus 1 week"
-    ExpiresByType image/webp "access plus 1 week"
-    ExpiresByType image/svg+xml "access plus 1 week"
-    ExpiresByType image/gif "access plus 1 week"
-    
-    # Fontes - Cache longo
-    ExpiresByType font/woff "access plus 1 month"
-    ExpiresByType font/woff2 "access plus 1 month"
-    ExpiresByType application/font-woff "access plus 1 month"
-    ExpiresByType application/font-woff2 "access plus 1 month"
-    
-    # PDFs e outros documentos
-    ExpiresByType application/pdf "access plus 1 week"
+    ExpiresActive Off
 </IfModule>
 
-# Headers de Cache Control
+# Headers para FORÇAR atualização imediata
 <IfModule mod_headers.c>
-    # HTML - Sempre verificar por atualizações
+    # HTML - SEMPRE verificar por atualizações
     <FilesMatch "\.(html|htm|xhtml)$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
         Header set Pragma "no-cache"
         Header set Expires "0"
+        Header unset ETag
+        Header set Last-Modified "0"
     </FilesMatch>
     
-    # CSS e JS - Cache com revalidação
+    # CSS e JS - SEM CACHE
     <FilesMatch "\.(css|js)$">
-        Header set Cache-Control "max-age=3600, must-revalidate"
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header unset ETag
+        Header set Last-Modified "0"
+    </FilesMatch>
+    
+    # Imagens - SEM CACHE
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
         Header unset ETag
     </FilesMatch>
     
-    # Imagens - Cache moderado
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
-        Header set Cache-Control "max-age=604800, public"
-    </FilesMatch>
-    
-    # Fontes - Cache longo
+    # Fontes - SEM CACHE
     <FilesMatch "\.(woff|woff2|ttf|eot)$">
-        Header set Cache-Control "max-age=2592000, public"
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header unset ETag
     </FilesMatch>
     
-    # PDFs
+    # PDFs - SEM CACHE
     <FilesMatch "\.pdf$">
-        Header set Cache-Control "max-age=604800, public"
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header unset ETag
     </FilesMatch>
 </IfModule>
 
@@ -85,7 +74,7 @@ RewriteEngine On
     Deny from all
 </FilesMatch>
 
-# Configurações de segurança adicionais
+# Configurações de segurança
 Header always set X-Content-Type-Options nosniff
 Header always set X-Frame-Options DENY
 Header always set X-XSS-Protection "1; mode=block"
@@ -94,6 +83,3 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 # Forçar HTTPS (descomente se tiver SSL)
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Página de erro personalizada (opcional)
-# ErrorDocument 404 /404.html

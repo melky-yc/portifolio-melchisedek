@@ -2,29 +2,24 @@
  * ========================================
  * SERVICE WORKER - PORTFÓLIO MELCHISEDEK
  * ========================================
- * Versão: 2.0.0
- * Descrição: Service Worker para funcionalidades PWA
+ * Versão: 3.0.0
+ * Descrição: Service Worker para funcionalidades PWA (SEM CACHE)
  */
 
-const STATIC_CACHE = 'static-v2.0.0';
-const DYNAMIC_CACHE = 'dynamic-v2.0.0';
+const STATIC_CACHE = 'static-v3.0.0';
+const DYNAMIC_CACHE = 'dynamic-v3.0.0';
 
-// Recursos para cache estático
+// Recursos para cache estático (apenas para offline)
 const STATIC_ASSETS = [
     '/',
     '/index.html',
-    '/css/style.css',
-    '/js/script.js',
     '/manifest.json',
-    '/img/melchisedek.webp',
-    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css'
+    '/img/melchisedek.webp'
 ];
 
-// Recursos para cache dinâmico (imagens de projetos)
+// Recursos para cache dinâmico (apenas para offline)
 const DYNAMIC_ASSETS = [
-    '/img/projects/',
-    'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/'
+    '/img/projects/'
 ];
 
 // Instalar Service Worker
@@ -78,11 +73,11 @@ self.addEventListener('fetch', (event) => {
     // Estratégia para diferentes tipos de recursos
     if (request.method === 'GET') {
         if (url.origin === location.origin) {
-            // Recursos locais - Cache First
-            event.respondWith(cacheFirst(request));
+            // Recursos locais - Network First (sempre atualizado)
+            event.respondWith(networkFirst(request));
         } else if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'cdnjs.cloudflare.com' || url.hostname === 'cdn.jsdelivr.net') {
-            // Recursos externos - Stale While Revalidate
-            event.respondWith(staleWhileRevalidate(request));
+            // Recursos externos - Network First
+            event.respondWith(networkFirst(request));
         } else {
             // Outros recursos - Network First
             event.respondWith(networkFirst(request));
@@ -90,52 +85,18 @@ self.addEventListener('fetch', (event) => {
     }
 });
 
-// Estratégia Cache First
-async function cacheFirst(request) {
-    try {
-        const cachedResponse = await caches.match(request);
-        if (cachedResponse) {
-            return cachedResponse;
-        }
-
-        const networkResponse = await fetch(request);
-        if (networkResponse.ok) {
-            const cache = await caches.open(STATIC_CACHE);
-            cache.put(request, networkResponse.clone());
-        }
-
-        return networkResponse;
-    } catch (error) {
-        console.error('Cache First Error:', error);
-        return new Response('Recurso não disponível offline', { status: 503 });
-    }
-}
-
-// Estratégia Stale While Revalidate
-async function staleWhileRevalidate(request) {
-    const cache = await caches.open(DYNAMIC_CACHE);
-    const cachedResponse = await cache.match(request);
-
-    const fetchPromise = fetch(request).then((networkResponse) => {
-        if (networkResponse.ok) {
-            cache.put(request, networkResponse.clone());
-        }
-        return networkResponse;
-    }).catch(() => cachedResponse);
-
-    return cachedResponse || fetchPromise;
-}
-
-// Estratégia Network First
+// Estratégia Network First (sempre busca na rede primeiro)
 async function networkFirst(request) {
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
+            // Cache apenas para offline (não interfere na atualização)
             const cache = await caches.open(DYNAMIC_CACHE);
             cache.put(request, networkResponse.clone());
         }
         return networkResponse;
     } catch (error) {
+        // Fallback para cache apenas se offline
         const cachedResponse = await caches.match(request);
         if (cachedResponse) {
             return cachedResponse;
@@ -149,6 +110,7 @@ async function networkFirst(request) {
         return new Response('Recurso não disponível offline', { status: 503 });
     }
 }
+
 
 // Limpeza de cache
 self.addEventListener('message', (event) => {
@@ -191,8 +153,8 @@ self.addEventListener('push', (event) => {
         const data = event.data.json();
         const options = {
             body: data.body,
-            icon: '/icon-192x192.png',
-            badge: '/badge-72x72.png',
+            icon: '/img/logoM.webp',
+            badge: '/img/logoM.webp',
             vibrate: [100, 50, 100],
             data: {
                 dateOfArrival: Date.now(),
@@ -202,12 +164,12 @@ self.addEventListener('push', (event) => {
                 {
                     action: 'explore',
                     title: 'Ver Portfólio',
-                    icon: '/icon-192x192.png'
+                    icon: '/img/logoM.webp'
                 },
                 {
                     action: 'close',
                     title: 'Fechar',
-                    icon: '/icon-192x192.png'
+                    icon: '/img/logoM.webp'
                 }
             ]
         };
@@ -229,4 +191,4 @@ self.addEventListener('notificationclick', (event) => {
     }
 });
 
-console.log('Service Worker: Carregado com sucesso');
+console.log('Service Worker: Carregado com sucesso - Modo Network First (sem cache)');

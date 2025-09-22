@@ -102,17 +102,23 @@
                     <span></span>
                 </button>
                 <ul class="nav-list">
-                    <li><a href="#inicio" class="nav-link">Início</a></li>
-                    <li><a href="#sobre" class="nav-link">Sobre Mim</a></li>
-                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                    <li><a href="#stacks" class="nav-link">Stacks</a></li>
-                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><a href="#inicio" class="nav-link" data-i18n="nav.inicio">Início</a></li>
+                    <li><a href="#sobre" class="nav-link" data-i18n="nav.sobre">Sobre Mim</a></li>
+                    <li><a href="#projetos" class="nav-link" data-i18n="nav.projetos">Projetos</a></li>
+                    <li><a href="#stacks" class="nav-link" data-i18n="nav.stacks">Stacks</a></li>
+                    <li><a href="#habilidades" class="nav-link" data-i18n="nav.habilidades">Habilidades</a></li>
+                    <li><a href="#contato" class="nav-link" data-i18n="nav.contato">Contato</a></li>
                 </ul>
             </nav>
-            <button class="theme-toggle" aria-label="Alternar tema" title="Alternar entre modo claro e escuro">
-                <i class="fas fa-moon"></i>
-            </button>
+            <div class="header-controls">
+                <button class="language-toggle" aria-label="Alternar idioma" title="Alternar entre português e inglês">
+                    <i class="fas fa-globe"></i>
+                    <span class="language-text">PT</span>
+                </button>
+                <button class="theme-toggle" aria-label="Alternar tema" title="Alternar entre modo claro e escuro">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -150,22 +156,22 @@
                             <span class="subtitle-separator">&</span>
                             <span class="subtitle-text">UI/UX Designer</span>
                         </h2>
-                        <p class="description">Crio interfaces modernas e responsivas, unindo design intuitivo e código
+                        <p class="description" data-i18n="hero.description">Crio interfaces modernas e responsivas, unindo design intuitivo e código
                             eficiente para entregar experiências digitais funcionais e atraentes.</p>
 
                         <!-- Estatísticas rápidas -->
                         <div class="hero-stats">
                             <div class="stat-item">
                                 <span class="stat-number" data-target="5">0</span>
-                                <span class="stat-label">Projetos</span>
+                                <span class="stat-label" data-i18n="hero.stats.projetos">Projetos</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-number" data-target="8">0</span>
-                                <span class="stat-label">Tecnologias</span>
+                                <span class="stat-label" data-i18n="hero.stats.tecnologias">Tecnologias</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-number" data-target="1">0</span>
-                                <span class="stat-label">Anos</span>
+                                <span class="stat-label" data-i18n="hero.stats.anos">Anos</span>
                             </div>
                         </div>
 
@@ -186,13 +192,6 @@
                         </div>
                     </div>
 
-                    <!-- Avatar/Foto placeholder -->
-                    <div class="hero-image">
-                        <div class="avatar-container">
-                            <img src="img/melchisedek.webp" alt="Foto de Melchisedek Lima" class="avatar" />
-                        </div>
-                        <div class="avatar-ring"></div>
-                    </div>
                 </div>
             </div>
 
@@ -715,7 +714,7 @@
                         </div>
                     </div>
                     <div class="contact-form-box">
-                        <form class="contact-form" action="/submit_form" method="post" novalidate>
+                        <form class="contact-form" action="/api/submit_form" method="post" novalidate>
                             <div class="form-group">
                                 <label for="name" class="sr-only">Nome completo</label>
                                 <input type="text" id="name" name="name" placeholder="Seu nome completo" required

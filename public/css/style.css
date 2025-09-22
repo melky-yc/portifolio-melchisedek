@@ -287,6 +287,60 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
+   CONTROLES DO HEADER
+   ======================================== */
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* ========================================
+   TOGGLE DE IDIOMA
+   ======================================== */
+
+.language-toggle {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-orange);
+    border-radius: 25px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    color: var(--accent-orange);
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 60px;
+    justify-content: center;
+}
+
+.language-toggle:hover {
+    background: var(--accent-orange);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+}
+
+.language-toggle:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+.language-toggle i {
+    font-size: 1rem;
+}
+
+.language-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
    TOGGLE DE TEMA
    ======================================== */
 
@@ -617,9 +671,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Conteúdo do hero */
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xxl);
+    display: flex;
+    justify-content: center;
     align-items: center;
     position: relative;
     z-index: 3;
@@ -627,7 +680,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Mobile: Layout vertical */
+/* Mobile: Layout responsivo */
 @media (max-width: 768px) {
     .hero-content {
         display: flex;
@@ -639,15 +692,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-text {
-    text-align: left;
-}
-
-/* Mobile: Centralizar texto do hero */
-@media (max-width: 768px) {
-    .hero-text {
-        text-align: center;
-        order: 1;
-    }
+    text-align: center;
+    max-width: 800px;
 }
 
 .hero-title {
@@ -679,10 +725,6 @@ h1, h2, h3, h4, h5, h6 {
     
     .cta-buttons {
         animation: fadeInUp 0.6s ease-out 0.4s both;
-    }
-    
-    .hero-image {
-        animation: fadeInRight 0.8s ease-out 0.5s both;
     }
 }
 
@@ -732,6 +774,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
     animation: fadeInUp 0.6s ease-out 0.3s both;
+    justify-content: center;
 }
 
 /* Mobile: Empilhar estatísticas verticalmente */
@@ -745,6 +788,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .stat-item {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .stat-number {
@@ -762,102 +808,14 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
 }
 
-/* Imagem do hero */
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeInRight 0.8s ease-out 0.4s both;
-}
-
-/* Mobile: Ajustar ordem e tamanho da imagem */
-@media (max-width: 768px) {
-    .hero-image {
-        order: 2;
-        margin-top: var(--spacing-lg);
-    }
-}
-
-.avatar-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-/* Mobile: Reduzir tamanho do avatar */
-@media (max-width: 768px) {
-    .avatar-container {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-.avatar {
-    width: 200px;
-    height: 200px;
-    background: var(--primary-gradient);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: var(--white);
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-/* Mobile: Reduzir tamanho do avatar */
-@media (max-width: 768px) {
-    .avatar {
-        width: 150px;
-        height: 150px;
-        font-size: 3rem;
-    }
-}
-
-.avatar-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    border: 2px solid var(--accent-blue);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: rotate 20s linear infinite;
-}
-
-/* Mobile: Reduzir tamanho do anel */
-@media (max-width: 768px) {
-    .avatar-ring {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-.avatar-ring::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid var(--accent-orange);
-    border-radius: 50%;
-    opacity: 0.5;
-    animation: rotate 15s linear infinite reverse;
-}
 
 /* Indicador de scroll */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3;
+    z-index: 1;
     animation: bounce 2s infinite;
 }
 
@@ -2017,6 +1975,26 @@ footer {
         display: flex;
     }
     
+    .header-controls {
+        gap: var(--spacing-xs);
+    }
+    
+    .language-toggle {
+        padding: 6px 10px;
+        min-width: 50px;
+        font-size: 0.8rem;
+    }
+    
+    .language-text {
+        font-size: 0.7rem;
+    }
+    
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
     .nav-list {
         position: fixed;
         top: 0;
@@ -2135,21 +2113,6 @@ footer {
         margin: var(--spacing-md);
     }
     
-    .avatar-container {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .avatar {
-        width: 120px;
-        height: 120px;
-        font-size: 2.5rem;
-    }
-    
-    .avatar-ring {
-        width: 150px;
-        height: 150px;
-    }
 }
 
 /* ========================================

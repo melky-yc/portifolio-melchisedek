@@ -11,12 +11,250 @@
 // CONFIGURAÇÕES E CONSTANTES
 // ========================================
 
+// Sistema de Internacionalização
+const TRANSLATIONS = {
+    pt: {
+        // Navegação
+        nav: {
+            inicio: 'Início',
+            sobre: 'Sobre Mim',
+            projetos: 'Projetos',
+            stacks: 'Stacks',
+            habilidades: 'Habilidades',
+            contato: 'Contato'
+        },
+        // Hero Section
+        hero: {
+            title: 'Melchisedek Lima',
+            subtitle: 'Front-end Developer & UI/UX Designer',
+            description: 'Crio interfaces modernas e responsivas, unindo design intuitivo e código eficiente para entregar experiências digitais funcionais e atraentes.',
+            stats: {
+                projetos: 'Projetos',
+                tecnologias: 'Tecnologias',
+                anos: 'Anos'
+            },
+            buttons: {
+                verProjetos: 'Ver Projetos',
+                contato: 'Entre em Contato',
+                downloadCV: 'Download CV'
+            }
+        },
+        // Seção Sobre
+        sobre: {
+            title: 'Sobre Mim',
+            quemSou: 'Quem eu sou?',
+            quemSouText: 'Sou um estudante de Ciência da Computação apaixonado por tecnologia e design digital. Durante minha jornada acadêmica, tenho me dedicado ao estudo de desenvolvimento front-end e design de interfaces, buscando sempre unir estética, usabilidade e performance.',
+            emQueAcredito: 'Em que acredito?',
+            emQueAcreditoText: 'Acredito que uma boa experiência do usuário nasce da combinação entre código limpo e design inteligente, por isso meu foco é criar interfaces modernas, responsivas e acessíveis, que tornem a interação com a tecnologia mais simples e agradável.',
+            objetivo: 'Qual é meu objetivo?',
+            objetivoText: 'Meu objetivo é me tornar um Front-end Developer e UI/UX Designer, entregando soluções digitais que uniam inovação, funcionalidade e experiência premium.',
+            stats: {
+                graduacao: 'Ciência da Computação',
+                graduacaoDesc: 'Graduação em andamento',
+                tecnologias: '8+ Tecnologias',
+                tecnologiasDesc: 'Dominadas e em constante evolução',
+                projetos: '5+ Projetos',
+                projetosDesc: 'Desenvolvidos e em produção',
+                colaboracao: 'Colaboração',
+                colaboracaoDesc: 'Trabalho em equipe e comunicação'
+            }
+        },
+        // Seção Projetos
+        projetos: {
+            title: 'Meus Projetos',
+            filters: {
+                todos: 'Todos',
+                frontend: 'Front-end',
+                fullstack: 'Full-stack',
+                uiUx: 'UI/UX',
+                mobile: 'Mobile'
+            },
+            status: {
+                concluido: 'Concluído',
+                emDesenvolvimento: 'Em Desenvolvimento'
+            },
+            verTodos: 'Ver Todos no GitHub'
+        },
+        // Seção Stacks
+        stacks: {
+            title: 'Minhas Stacks',
+            subtitle: 'Uma visão abrangente das minhas competências técnicas e das ferramentas que utilizo para transformar ideias em realidade.',
+            frontend: 'Front-end',
+            backend: 'Back-end',
+            database: 'Banco de Dados',
+            tools: 'Ferramentas & UX/UI'
+        },
+        // Seção Habilidades
+        habilidades: {
+            title: 'Habilidades Soft',
+            subtitle: 'Além das competências técnicas, desenvolvo habilidades interpessoais essenciais para o sucesso profissional.',
+            comunicacao: 'Comunicação',
+            lideranca: 'Liderança',
+            aprendizado: 'Aprendizado',
+            skills: {
+                comunicacaoEfetiva: 'Comunicação Efetiva',
+                apresentacoes: 'Apresentações',
+                inglesIntermediario: 'Inglês Intermediário',
+                gestaoEquipe: 'Gestão de Equipe',
+                tomadaDecisao: 'Tomada de Decisão',
+                planejamentoEstrategico: 'Planejamento Estratégico',
+                pensamentoCritico: 'Pensamento Crítico',
+                resolucaoProblemas: 'Resolução de Problemas',
+                aprendizadoContinuo: 'Aprendizado Contínuo'
+            }
+        },
+        // Seção Contato
+        contato: {
+            title: 'Entre em Contato',
+            subtitle: 'Vamos conversar!',
+            description: 'Estou sempre aberto a novas oportunidades, colaborações e conversas interessantes. Se você tem um projeto em mente, quer discutir tecnologia ou apenas trocar ideias, não hesite em entrar em contato!',
+            quickContact: {
+                whatsapp: 'WhatsApp',
+                agendarReuniao: 'Agendar Reunião',
+                emailDireto: 'Email Direto'
+            },
+            form: {
+                nome: 'Seu nome completo',
+                email: 'seu.email@exemplo.com',
+                mensagem: 'Conte-me sobre seu projeto ou ideia...',
+                enviar: 'Enviar Mensagem',
+                enviando: 'Enviando...'
+            },
+            modal: {
+                sucesso: 'Mensagem enviada com sucesso!',
+                agradecimento: 'Agradeço o seu contato. Responderei o mais breve possível.'
+            }
+        },
+        // Footer
+        footer: {
+            copyright: 'Feito com suor e muito código.'
+        }
+    },
+    en: {
+        // Navigation
+        nav: {
+            inicio: 'Home',
+            sobre: 'About',
+            projetos: 'Projects',
+            stacks: 'Stacks',
+            habilidades: 'Skills',
+            contato: 'Contact'
+        },
+        // Hero Section
+        hero: {
+            title: 'Melchisedek Lima',
+            subtitle: 'Front-end Developer & UI/UX Designer',
+            description: 'I create modern and responsive interfaces, combining intuitive design and efficient code to deliver functional and attractive digital experiences.',
+            stats: {
+                projetos: 'Projects',
+                tecnologias: 'Technologies',
+                anos: 'Years'
+            },
+            buttons: {
+                verProjetos: 'View Projects',
+                contato: 'Get in Touch',
+                downloadCV: 'Download CV'
+            }
+        },
+        // About Section
+        sobre: {
+            title: 'About Me',
+            quemSou: 'Who am I?',
+            quemSouText: 'I am a Computer Science student passionate about technology and digital design. During my academic journey, I have dedicated myself to studying front-end development and interface design, always seeking to combine aesthetics, usability and performance.',
+            emQueAcredito: 'What do I believe in?',
+            emQueAcreditoText: 'I believe that a good user experience is born from the combination of clean code and intelligent design, which is why my focus is on creating modern, responsive and accessible interfaces that make interaction with technology simpler and more pleasant.',
+            objetivo: 'What is my goal?',
+            objetivoText: 'My goal is to become a Front-end Developer and UI/UX Designer, delivering digital solutions that combine innovation, functionality and premium experience.',
+            stats: {
+                graduacao: 'Computer Science',
+                graduacaoDesc: 'Degree in progress',
+                tecnologias: '8+ Technologies',
+                tecnologiasDesc: 'Mastered and constantly evolving',
+                projetos: '5+ Projects',
+                projetosDesc: 'Developed and in production',
+                colaboracao: 'Collaboration',
+                colaboracaoDesc: 'Teamwork and communication'
+            }
+        },
+        // Projects Section
+        projetos: {
+            title: 'My Projects',
+            filters: {
+                todos: 'All',
+                frontend: 'Front-end',
+                fullstack: 'Full-stack',
+                uiUx: 'UI/UX',
+                mobile: 'Mobile'
+            },
+            status: {
+                concluido: 'Completed',
+                emDesenvolvimento: 'In Development'
+            },
+            verTodos: 'View All on GitHub'
+        },
+        // Stacks Section
+        stacks: {
+            title: 'My Stacks',
+            subtitle: 'A comprehensive view of my technical skills and the tools I use to transform ideas into reality.',
+            frontend: 'Front-end',
+            backend: 'Back-end',
+            database: 'Database',
+            tools: 'Tools & UX/UI'
+        },
+        // Skills Section
+        habilidades: {
+            title: 'Soft Skills',
+            subtitle: 'Beyond technical skills, I develop interpersonal skills essential for professional success.',
+            comunicacao: 'Communication',
+            lideranca: 'Leadership',
+            aprendizado: 'Learning',
+            skills: {
+                comunicacaoEfetiva: 'Effective Communication',
+                apresentacoes: 'Presentations',
+                inglesIntermediario: 'Intermediate English',
+                gestaoEquipe: 'Team Management',
+                tomadaDecisao: 'Decision Making',
+                planejamentoEstrategico: 'Strategic Planning',
+                pensamentoCritico: 'Critical Thinking',
+                resolucaoProblemas: 'Problem Solving',
+                aprendizadoContinuo: 'Continuous Learning'
+            }
+        },
+        // Contact Section
+        contato: {
+            title: 'Get in Touch',
+            subtitle: "Let's talk!",
+            description: 'I am always open to new opportunities, collaborations and interesting conversations. If you have a project in mind, want to discuss technology or just exchange ideas, do not hesitate to get in touch!',
+            quickContact: {
+                whatsapp: 'WhatsApp',
+                agendarReuniao: 'Schedule Meeting',
+                emailDireto: 'Direct Email'
+            },
+            form: {
+                nome: 'Your full name',
+                email: 'your.email@example.com',
+                mensagem: 'Tell me about your project or idea...',
+                enviar: 'Send Message',
+                enviando: 'Sending...'
+            },
+            modal: {
+                sucesso: 'Message sent successfully!',
+                agradecimento: 'Thank you for your contact. I will respond as soon as possible.'
+            }
+        },
+        // Footer
+        footer: {
+            copyright: 'Made with sweat and lots of code.'
+        }
+    }
+};
+
 const CONFIG = {
     animationDelay: 150,
     modalTransition: 300,
     debounceDelay: 300,
     apiEndpoints: {
-        submitForm: '/submit_form'
+        submitForm: '/api/submit_form'
     },
     selectors: {
         year: '#year',
@@ -735,6 +973,342 @@ const NotificationManager = {
 };
 
 // ========================================
+// GERENCIADOR DE IDIOMAS
+// ========================================
+
+const LanguageManager = {
+    currentLanguage: 'pt',
+
+    init() {
+        this.setupLanguageToggle();
+        this.loadSavedLanguage();
+    },
+
+    setupLanguageToggle() {
+        const languageToggle = document.querySelector('.language-toggle');
+        if (!languageToggle) {
+            return;
+        }
+
+        languageToggle.addEventListener('click', () => {
+            this.toggleLanguage();
+        });
+    },
+
+    toggleLanguage() {
+        const newLanguage = this.currentLanguage === 'pt' ? 'en' : 'pt';
+        this.setLanguage(newLanguage);
+    },
+
+    setLanguage(language) {
+        this.currentLanguage = language;
+        localStorage.setItem('language', language);
+
+        // Atualizar texto do botão
+        const languageText = document.querySelector('.language-text');
+        if (languageText) {
+            languageText.textContent = language.toUpperCase();
+        }
+
+        // Atualizar atributo lang do HTML
+        document.documentElement.setAttribute('lang', language === 'pt' ? 'pt-BR' : 'en');
+
+        // Aplicar traduções
+        this.applyTranslations(language);
+    },
+
+    loadSavedLanguage() {
+        const savedLanguage = localStorage.getItem('language') || 'pt';
+        this.setLanguage(savedLanguage);
+    },
+
+    applyTranslations(language) {
+        const translations = TRANSLATIONS[language];
+        if (!translations) {
+            return;
+        }
+
+        // Navegação
+        this.updateNavigation(translations.nav);
+
+        // Hero Section
+        this.updateHero(translations.hero);
+
+        // Seção Sobre
+        this.updateAbout(translations.sobre);
+
+        // Seção Projetos
+        this.updateProjects(translations.projetos);
+
+        // Seção Stacks
+        this.updateStacks(translations.stacks);
+
+        // Seção Habilidades
+        this.updateSkills(translations.habilidades);
+
+        // Seção Contato
+        this.updateContact(translations.contato);
+
+        // Footer
+        this.updateFooter(translations.footer);
+    },
+
+    updateNavigation(nav) {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navTexts = ['inicio', 'sobre', 'projetos', 'stacks', 'habilidades', 'contato'];
+
+        navLinks.forEach((link, index) => {
+            if (navTexts[index]) {
+                link.textContent = nav[navTexts[index]];
+            }
+        });
+    },
+
+    updateHero(hero) {
+        // Título e subtítulo
+        const heroTitle = document.querySelector('#hero-title');
+        if (heroTitle) {
+            heroTitle.innerHTML = `
+                <span class="title-line">Melchisedek</span>
+                <span class="title-line highlight">Lima</span>
+            `;
+        }
+
+        const subtitle = document.querySelector('.subtitle');
+        if (subtitle) {
+            subtitle.innerHTML = `
+                <span class="subtitle-text">Front-end Developer</span>
+                <span class="subtitle-separator">&</span>
+                <span class="subtitle-text">UI/UX Designer</span>
+            `;
+        }
+
+        // Descrição
+        const description = document.querySelector('.description');
+        if (description) {
+            description.textContent = hero.description;
+        }
+
+        // Estatísticas
+        const statLabels = document.querySelectorAll('.stat-label');
+        const statKeys = ['projetos', 'tecnologias', 'anos'];
+        statLabels.forEach((label, index) => {
+            if (statKeys[index]) {
+                label.textContent = hero.stats[statKeys[index]];
+            }
+        });
+
+        // Botões
+        const buttons = document.querySelectorAll('.cta-buttons .btn');
+        const buttonKeys = ['verProjetos', 'contato', 'downloadCV'];
+        buttons.forEach((button, index) => {
+            if (buttonKeys[index] && button.querySelector('i')) {
+                const text = button.querySelector('i').nextSibling;
+                if (text) {
+                    text.textContent = 'ㅤ' + hero.buttons[buttonKeys[index]];
+                }
+            }
+        });
+    },
+
+    updateAbout(sobre) {
+        // Título
+        const title = document.querySelector('#sobre-title');
+        if (title) {
+            title.innerHTML = `Sobre <span class="highlight">Mim</span>`;
+        }
+
+        // Textos da seção sobre
+        const bioText = document.querySelector('.bio-text');
+        if (bioText) {
+            bioText.innerHTML = `
+                <h2>${sobre.quemSou}</h2>
+                <p>${sobre.quemSouText}</p>
+                <h2>${sobre.emQueAcredito}</h2>
+                <p>${sobre.emQueAcreditoText}</p>
+                <h2>${sobre.objetivo}</h2>
+                <p>${sobre.objetivoText}</p>
+            `;
+        }
+
+        // Estatísticas pessoais
+        const statCards = document.querySelectorAll('.stat-card');
+        const statKeys = ['graduacao', 'tecnologias', 'projetos', 'colaboracao'];
+        const statDescs = ['graduacaoDesc', 'tecnologiasDesc', 'projetosDesc', 'colaboracaoDesc'];
+
+        statCards.forEach((card, index) => {
+            const title = card.querySelector('h4');
+            const desc = card.querySelector('p');
+
+            if (title && statKeys[index]) {
+                title.textContent = sobre.stats[statKeys[index]];
+            }
+            if (desc && statDescs[index]) {
+                desc.textContent = sobre.stats[statDescs[index]];
+            }
+        });
+    },
+
+    updateProjects(projetos) {
+        // Título
+        const title = document.querySelector('#projetos-title');
+        if (title) {
+            title.innerHTML = `Meus <span class="highlight">Projetos</span>`;
+        }
+
+        // Filtros
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const filterKeys = ['todos', 'frontend', 'fullstack', 'uiUx', 'mobile'];
+
+        filterButtons.forEach((button, index) => {
+            if (filterKeys[index]) {
+                button.textContent = projetos.filters[filterKeys[index]];
+            }
+        });
+
+        // Status dos projetos
+        const statusBadges = document.querySelectorAll('.status-badge');
+        statusBadges.forEach(badge => {
+            if (badge.classList.contains('completed')) {
+                badge.textContent = projetos.status.concluido;
+            } else if (badge.classList.contains('in-progress')) {
+                badge.textContent = projetos.status.emDesenvolvimento;
+            }
+        });
+
+        // Botão "Ver Todos"
+        const seeMoreBtn = document.querySelector('.btn-more');
+        if (seeMoreBtn) {
+            seeMoreBtn.textContent = projetos.verTodos;
+        }
+    },
+
+    updateStacks(stacks) {
+        // Título
+        const title = document.querySelector('#stacks-title');
+        if (title) {
+            title.innerHTML = `Minhas <span class="highlight">Stacks</span>`;
+        }
+
+        // Subtítulo
+        const subtitle = document.querySelector('.section-subtitle');
+        if (subtitle) {
+            subtitle.textContent = stacks.subtitle;
+        }
+
+        // Categorias
+        const categoryTitles = document.querySelectorAll('.stack-category .category-title');
+        const categoryKeys = ['frontend', 'backend', 'database', 'tools'];
+
+        categoryTitles.forEach((title, index) => {
+            if (categoryKeys[index]) {
+                title.textContent = stacks[categoryKeys[index]];
+            }
+        });
+    },
+
+    updateSkills(habilidades) {
+        // Título
+        const title = document.querySelector('#habilidades-title');
+        if (title) {
+            title.innerHTML = `Habilidades <span class="highlight">Soft</span>`;
+        }
+
+        // Subtítulo
+        const subtitle = document.querySelector('.section-habilidades .section-subtitle');
+        if (subtitle) {
+            subtitle.textContent = habilidades.subtitle;
+        }
+
+        // Categorias
+        const categoryTitles = document.querySelectorAll('.skill-category .category-title');
+        const categoryKeys = ['comunicacao', 'lideranca', 'aprendizado'];
+
+        categoryTitles.forEach((title, index) => {
+            if (categoryKeys[index]) {
+                title.textContent = habilidades[categoryKeys[index]];
+            }
+        });
+
+        // Skills individuais
+        const skillItems = document.querySelectorAll('.skill-item span');
+        const skillKeys = [
+            'comunicacaoEfetiva', 'apresentacoes', 'inglesIntermediario',
+            'gestaoEquipe', 'tomadaDecisao', 'planejamentoEstrategico',
+            'pensamentoCritico', 'resolucaoProblemas', 'aprendizadoContinuo'
+        ];
+
+        skillItems.forEach((item, index) => {
+            if (skillKeys[index]) {
+                item.textContent = habilidades.skills[skillKeys[index]];
+            }
+        });
+    },
+
+    updateContact(contato) {
+        // Título
+        const title = document.querySelector('#contato-title');
+        if (title) {
+            title.innerHTML = `Entre em <span class="highlight">Contato</span>`;
+        }
+
+        // Subtítulo e descrição
+        const subtitle = document.querySelector('.contato-info h3');
+        if (subtitle) {
+            subtitle.textContent = contato.subtitle;
+        }
+
+        const description = document.querySelector('.contato-info p');
+        if (description) {
+            description.textContent = contato.description;
+        }
+
+        // Botões de contato rápido
+        const quickBtns = document.querySelectorAll('.quick-btn span');
+        const quickKeys = ['whatsapp', 'agendarReuniao', 'emailDireto'];
+
+        quickBtns.forEach((btn, index) => {
+            if (quickKeys[index]) {
+                btn.textContent = contato.quickContact[quickKeys[index]];
+            }
+        });
+
+        // Formulário
+        const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+        const formKeys = ['nome', 'email', 'mensagem'];
+
+        formInputs.forEach((input, index) => {
+            if (formKeys[index]) {
+                input.placeholder = contato.form[formKeys[index]];
+            }
+        });
+
+        const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.querySelector('.btn-text').textContent = contato.form.enviar;
+        }
+
+        // Modal
+        const modalTitle = document.querySelector('#modal-title');
+        if (modalTitle) {
+            modalTitle.textContent = contato.modal.sucesso;
+        }
+
+        const modalText = document.querySelector('.modal-content p');
+        if (modalText) {
+            modalText.textContent = contato.modal.agradecimento;
+        }
+    },
+
+    updateFooter(footer) {
+        const footerText = document.querySelector('footer p');
+        if (footerText) {
+            footerText.innerHTML = `&copy; <span id="year"></span> Melchisedek Lima. ${footer.copyright}`;
+        }
+    }
+};
+
+// ========================================
 // GERENCIADOR DE TEMA
 // ========================================
 
@@ -1082,6 +1656,7 @@ const App = {
         AnimationManager.init();
         FormManager.init();
         ModalManager.init();
+        LanguageManager.init();
         ThemeManager.init();
         ProjectFilterManager.init();
         ScrollAnimationManager.init();

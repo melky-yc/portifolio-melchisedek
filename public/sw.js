@@ -18,9 +18,9 @@ const STATIC_ASSETS = [
 ];
 
 // Recursos para cache dinâmico (apenas para offline)
-const DYNAMIC_ASSETS = [
-    '/img/projects/'
-];
+// const DYNAMIC_ASSETS = [
+//     '/img/projects/'
+// ];
 
 // Instalar Service Worker
 self.addEventListener('install', (event) => {
@@ -75,7 +75,9 @@ self.addEventListener('fetch', (event) => {
         if (url.origin === location.origin) {
             // Recursos locais - Network First (sempre atualizado)
             event.respondWith(networkFirst(request));
-        } else if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'cdnjs.cloudflare.com' || url.hostname === 'cdn.jsdelivr.net') {
+        } else if (url.hostname === 'fonts.googleapis.com' ||
+                   url.hostname === 'cdnjs.cloudflare.com' ||
+                   url.hostname === 'cdn.jsdelivr.net') {
             // Recursos externos - Network First
             event.respondWith(networkFirst(request));
         } else {

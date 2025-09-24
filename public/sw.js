@@ -76,8 +76,8 @@ self.addEventListener('fetch', (event) => {
             // Recursos locais - Network First (sempre atualizado)
             event.respondWith(networkFirst(request));
         } else if (url.hostname === 'fonts.googleapis.com' ||
-                   url.hostname === 'cdnjs.cloudflare.com' ||
-                   url.hostname === 'cdn.jsdelivr.net') {
+                    url.hostname === 'cdnjs.cloudflare.com' ||
+                    url.hostname === 'cdn.jsdelivr.net') {
             // Recursos externos - Network First
             event.respondWith(networkFirst(request));
         } else {

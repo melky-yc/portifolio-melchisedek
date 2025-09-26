@@ -54,11 +54,12 @@
     --border-radius-lg: 12px;
     --border-radius-xl: 16px;
     
-    /* Transições */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    /* Transições otimizadas */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
     --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     
     /* Z-index */
     --z-dropdown: 1000;
@@ -302,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .language-toggle {
     background: var(--card-bg);
-    border: 2px solid var(--accent-orange);
+    border: 2px solid var(--accent-blue);
     border-radius: 25px;
     padding: 8px 12px;
     display: flex;
@@ -310,7 +311,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--spacing-xs);
     cursor: pointer;
     transition: all var(--transition-normal);
-    color: var(--accent-orange);
+    color: var(--accent-blue);
     font-size: 0.9rem;
     font-weight: 600;
     min-width: 60px;
@@ -318,10 +319,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .language-toggle:hover {
-    background: var(--accent-orange);
+    background: var(--accent-blue);
     color: var(--white);
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 174, 255, 0.3);
 }
 
 .language-toggle:focus {
@@ -346,7 +347,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .theme-toggle {
     background: var(--card-bg);
-    border: 2px solid var(--accent-blue);
+    border: 2px solid var(--accent-orange);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -355,21 +356,21 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     cursor: pointer;
     transition: all var(--transition-normal);
-    color: var(--accent-blue);
+    color: var(--accent-orange);
     font-size: 1.2rem;
     position: relative;
     overflow: hidden;
 }
 
 .theme-toggle:hover {
-    background: var(--accent-blue);
+    background: var(--accent-orange);
     color: var(--white);
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 174, 0, 0.3);
 }
 
 .theme-toggle:focus {
-    outline: 2px solid var(--accent-orange);
+    outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
 
@@ -514,7 +515,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 4px;
     background: var(--accent-blue);
     border-radius: 50%;
-    animation: float 4s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
     opacity: 0.6;
     box-shadow: 0 0 8px var(--accent-blue);
     will-change: transform, opacity;
@@ -600,7 +601,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
     color: var(--accent-blue);
     opacity: 0.3;
-    animation: floatIcon 6s ease-in-out infinite;
+    animation: floatIcon 4s ease-in-out infinite;
     transition: all var(--transition-normal);
     will-change: transform, opacity;
 }
@@ -712,23 +713,23 @@ h1, h2, h3, h4, h5, h6 {
 /* Melhorar animações do hero no desktop - otimizadas */
 @media (min-width: 769px) {
     .hero-title {
-        animation: fadeInDown 0.8s ease-out;
+        animation: fadeInDown 0.5s ease-out;
     }
     
     .subtitle {
-        animation: fadeInUp 0.6s ease-out 0.1s both;
+        animation: fadeInUp 0.4s ease-out 0.05s both;
     }
     
     .description {
-        animation: fadeInUp 0.6s ease-out 0.2s both;
+        animation: fadeInUp 0.4s ease-out 0.1s both;
     }
     
     .hero-stats {
-        animation: fadeInUp 0.6s ease-out 0.3s both;
+        animation: fadeInUp 0.4s ease-out 0.15s both;
     }
     
     .cta-buttons {
-        animation: fadeInUp 0.6s ease-out 0.4s both;
+        animation: fadeInUp 0.4s ease-out 0.2s both;
     }
 }
 
@@ -746,7 +747,7 @@ h1, h2, h3, h4, h5, h6 {
 .subtitle {
     font-size: clamp(1.2rem, 4vw, 1.8rem);
     color: var(--light-grey);
-    animation: fadeInUp 0.6s ease-out 0.1s both;
+    animation: fadeInUp 0.4s ease-out 0.05s both;
     margin-bottom: var(--spacing-md);
     font-weight: 300;
     will-change: transform, opacity;
@@ -766,7 +767,7 @@ h1, h2, h3, h4, h5, h6 {
 .description {
     font-size: clamp(1rem, 3vw, 1.2rem);
     color: var(--light-grey);
-    animation: fadeInUp 0.6s ease-out 0.2s both;
+    animation: fadeInUp 0.4s ease-out 0.1s both;
     margin-bottom: var(--spacing-xl);
     line-height: 1.7;
     will-change: transform, opacity;
@@ -777,7 +778,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
-    animation: fadeInUp 0.6s ease-out 0.3s both;
+    animation: fadeInUp 0.4s ease-out 0.15s both;
     justify-content: center;
 }
 
@@ -975,8 +976,8 @@ section {
 @media (min-width: 769px) {
     section {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(15px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     section.visible {
@@ -985,12 +986,12 @@ section {
     }
     
     /* Animação escalonada mais suave para seções */
-    section:nth-child(1) { transition-delay: 0.05s; }
-    section:nth-child(2) { transition-delay: 0.1s; }
-    section:nth-child(3) { transition-delay: 0.15s; }
-    section:nth-child(4) { transition-delay: 0.2s; }
-    section:nth-child(5) { transition-delay: 0.25s; }
-    section:nth-child(6) { transition-delay: 0.3s; }
+    section:nth-child(1) { transition-delay: 0.02s; }
+    section:nth-child(2) { transition-delay: 0.05s; }
+    section:nth-child(3) { transition-delay: 0.08s; }
+    section:nth-child(4) { transition-delay: 0.1s; }
+    section:nth-child(5) { transition-delay: 0.12s; }
+    section:nth-child(6) { transition-delay: 0.15s; }
 }
 
 /* ========================================
@@ -1282,23 +1283,27 @@ section {
 /* Melhorar animações de hover no desktop */
 @media (min-width: 769px) {
     .project-card:hover {
-        transform: translateY(-20px) scale(1.03);
-        box-shadow: 0 20px 40px rgba(0, 191, 255, 0.4);
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 191, 255, 0.35);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .stack-category:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 15px 30px rgba(0, 191, 255, 0.3);
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0, 191, 255, 0.25);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .skill-category:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 25px rgba(0, 191, 255, 0.25);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .stat-card:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 8px 20px rgba(0, 191, 255, 0.25);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 }
 
@@ -2162,8 +2167,8 @@ footer {
 @media (min-width: 769px) {
     .project-card {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(20px);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .project-card.revealed {
@@ -2173,8 +2178,8 @@ footer {
     
     .stack-category {
         opacity: 0;
-        transform: translateY(25px);
-        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(15px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .stack-category.revealed {
@@ -2184,8 +2189,8 @@ footer {
     
     .skill-category {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(15px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .skill-category.revealed {
@@ -2195,8 +2200,8 @@ footer {
     
     .stat-card {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(15px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .stat-card.revealed {
@@ -2205,21 +2210,21 @@ footer {
     }
     
     /* Animação escalonada mais suave para cards */
-    .stat-card:nth-child(1) { transition-delay: 0.05s; }
-    .stat-card:nth-child(2) { transition-delay: 0.1s; }
-    .stat-card:nth-child(3) { transition-delay: 0.15s; }
-    .stat-card:nth-child(4) { transition-delay: 0.2s; }
+    .stat-card:nth-child(1) { transition-delay: 0.02s; }
+    .stat-card:nth-child(2) { transition-delay: 0.04s; }
+    .stat-card:nth-child(3) { transition-delay: 0.06s; }
+    .stat-card:nth-child(4) { transition-delay: 0.08s; }
     
-    .stack-category:nth-child(1) { transition-delay: 0.05s; }
-    .stack-category:nth-child(2) { transition-delay: 0.1s; }
-    .stack-category:nth-child(3) { transition-delay: 0.15s; }
-    .stack-category:nth-child(4) { transition-delay: 0.2s; }
+    .stack-category:nth-child(1) { transition-delay: 0.02s; }
+    .stack-category:nth-child(2) { transition-delay: 0.04s; }
+    .stack-category:nth-child(3) { transition-delay: 0.06s; }
+    .stack-category:nth-child(4) { transition-delay: 0.08s; }
     
-    .project-card:nth-child(1) { transition-delay: 0.05s; }
-    .project-card:nth-child(2) { transition-delay: 0.1s; }
-    .project-card:nth-child(3) { transition-delay: 0.15s; }
-    .project-card:nth-child(4) { transition-delay: 0.2s; }
-    .project-card:nth-child(5) { transition-delay: 0.25s; }
+    .project-card:nth-child(1) { transition-delay: 0.02s; }
+    .project-card:nth-child(2) { transition-delay: 0.04s; }
+    .project-card:nth-child(3) { transition-delay: 0.06s; }
+    .project-card:nth-child(4) { transition-delay: 0.08s; }
+    .project-card:nth-child(5) { transition-delay: 0.1s; }
 }
 
 /* ========================================
@@ -2371,8 +2376,8 @@ footer {
 
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(15px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.revealed {
@@ -2382,8 +2387,8 @@ footer {
 
 .scroll-reveal-left {
     opacity: 0;
-    transform: translateX(-20px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-15px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-left.revealed {
@@ -2393,8 +2398,8 @@ footer {
 
 .scroll-reveal-right {
     opacity: 0;
-    transform: translateX(20px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(15px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-right.revealed {
@@ -2405,12 +2410,12 @@ footer {
 /* Animações progressivas baseadas na posição do scroll */
 @media (min-width: 769px) {
     .scroll-reveal {
-        transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .scroll-reveal-left,
     .scroll-reveal-right {
-        transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 }
 

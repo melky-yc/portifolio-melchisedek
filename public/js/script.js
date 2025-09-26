@@ -250,9 +250,9 @@ const TRANSLATIONS = {
 };
 
 const CONFIG = {
-    animationDelay: 150,
-    modalTransition: 300,
-    debounceDelay: 300,
+    animationDelay: 80,
+    modalTransition: 250,
+    debounceDelay: 200,
     apiEndpoints: {
         submitForm: '/api/submit_form'
     },
@@ -617,9 +617,9 @@ const AnimationManager = {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Adicionar delay baseado na posição do elemento
+                    // Adicionar delay baseado na posição do elemento (reduzido)
                     const rect = entry.target.getBoundingClientRect();
-                    const delay = Math.min(rect.top / window.innerHeight * 200, 200);
+                    const delay = Math.min(rect.top / window.innerHeight * 100, 100);
 
                     setTimeout(() => {
                         entry.target.classList.add('revealed');
@@ -629,8 +629,8 @@ const AnimationManager = {
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
 
         animatedElements.forEach(element => {
@@ -1534,7 +1534,7 @@ const ScrollAnimationManager = {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const rect = entry.target.getBoundingClientRect();
-                    const delay = Math.min(rect.top / window.innerHeight * 300, 300);
+                    const delay = Math.min(rect.top / window.innerHeight * 150, 150);
 
                     setTimeout(() => {
                         entry.target.classList.add(CONFIG.classes.revealed);
@@ -1544,8 +1544,8 @@ const ScrollAnimationManager = {
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
         });
 
         elements.forEach(el => elementObserver.observe(el));
@@ -1555,7 +1555,7 @@ const ScrollAnimationManager = {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const rect = entry.target.getBoundingClientRect();
-                    const delay = Math.min(rect.top / window.innerHeight * 400, 400);
+                    const delay = Math.min(rect.top / window.innerHeight * 200, 200);
 
                     setTimeout(() => {
                         entry.target.classList.add('visible');
@@ -1565,8 +1565,8 @@ const ScrollAnimationManager = {
                 }
             });
         }, {
-            threshold: 0.25,
-            rootMargin: '0px 0px -120px 0px'
+            threshold: 0.2,
+            rootMargin: '0px 0px -60px 0px'
         });
 
         sections.forEach(section => sectionObserver.observe(section));
@@ -1616,7 +1616,7 @@ const ScrollAnimationManager = {
 
     animateCounter(element) {
         const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2000;
+        const duration = 1200;
         const increment = target / (duration / 16);
         let current = 0;
 

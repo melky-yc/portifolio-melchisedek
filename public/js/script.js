@@ -27,6 +27,7 @@ const TRANSLATIONS = {
         hero: {
             title: 'Melchisedek Lima',
             subtitle: 'Front-end Developer & UI/UX Designer',
+            // eslint-disable-next-line max-len
             description: 'Crio interfaces modernas e responsivas, unindo design intuitivo e código eficiente para entregar experiências digitais funcionais e atraentes.',
             stats: {
                 projetos: 'Projetos',
@@ -43,10 +44,13 @@ const TRANSLATIONS = {
         sobre: {
             title: 'Sobre Mim',
             quemSou: 'Quem eu sou?',
+            // eslint-disable-next-line max-len
             quemSouText: 'Sou um estudante de Ciência da Computação apaixonado por tecnologia e design digital. Durante minha jornada acadêmica, tenho me dedicado ao estudo de desenvolvimento front-end e design de interfaces, buscando sempre unir estética, usabilidade e performance.',
             emQueAcredito: 'Em que acredito?',
+            // eslint-disable-next-line max-len
             emQueAcreditoText: 'Acredito que uma boa experiência do usuário nasce da combinação entre código limpo e design inteligente, por isso meu foco é criar interfaces modernas, responsivas e acessíveis, que tornem a interação com a tecnologia mais simples e agradável.',
             objetivo: 'Qual é meu objetivo?',
+            // eslint-disable-next-line max-len
             objetivoText: 'Meu objetivo é me tornar um Front-end Developer e UI/UX Designer, entregando soluções digitais que uniam inovação, funcionalidade e experiência premium.',
             stats: {
                 graduacao: 'Ciência da Computação',
@@ -78,6 +82,7 @@ const TRANSLATIONS = {
         // Seção Stacks
         stacks: {
             title: 'Minhas Stacks',
+            // eslint-disable-next-line max-len
             subtitle: 'Uma visão abrangente das minhas competências técnicas e das ferramentas que utilizo para transformar ideias em realidade.',
             frontend: 'Front-end',
             backend: 'Back-end',
@@ -87,6 +92,7 @@ const TRANSLATIONS = {
         // Seção Habilidades
         habilidades: {
             title: 'Habilidades Soft',
+            // eslint-disable-next-line max-len
             subtitle: 'Além das competências técnicas, desenvolvo habilidades interpessoais essenciais para o sucesso profissional.',
             comunicacao: 'Comunicação',
             lideranca: 'Liderança',
@@ -107,6 +113,7 @@ const TRANSLATIONS = {
         contato: {
             title: 'Entre em Contato',
             subtitle: 'Vamos conversar!',
+            // eslint-disable-next-line max-len
             description: 'Estou sempre aberto a novas oportunidades, colaborações e conversas interessantes. Se você tem um projeto em mente, quer discutir tecnologia ou apenas trocar ideias, não hesite em entrar em contato!',
             quickContact: {
                 whatsapp: 'WhatsApp',
@@ -144,6 +151,7 @@ const TRANSLATIONS = {
         hero: {
             title: 'Melchisedek Lima',
             subtitle: 'Front-end Developer & UI/UX Designer',
+            // eslint-disable-next-line max-len
             description: 'I create modern and responsive interfaces, combining intuitive design and efficient code to deliver functional and attractive digital experiences.',
             stats: {
                 projetos: 'Projects',
@@ -160,10 +168,13 @@ const TRANSLATIONS = {
         sobre: {
             title: 'About Me',
             quemSou: 'Who am I?',
+            // eslint-disable-next-line max-len
             quemSouText: 'I am a Computer Science student passionate about technology and digital design. During my academic journey, I have dedicated myself to studying front-end development and interface design, always seeking to combine aesthetics, usability and performance.',
             emQueAcredito: 'What do I believe in?',
+            // eslint-disable-next-line max-len
             emQueAcreditoText: 'I believe that a good user experience is born from the combination of clean code and intelligent design, which is why my focus is on creating modern, responsive and accessible interfaces that make interaction with technology simpler and more pleasant.',
             objetivo: 'What is my goal?',
+            // eslint-disable-next-line max-len
             objetivoText: 'My goal is to become a Front-end Developer and UI/UX Designer, delivering digital solutions that combine innovation, functionality and premium experience.',
             stats: {
                 graduacao: 'Computer Science',
@@ -195,6 +206,7 @@ const TRANSLATIONS = {
         // Stacks Section
         stacks: {
             title: 'My Stacks',
+            // eslint-disable-next-line max-len
             subtitle: 'A comprehensive view of my technical skills and the tools I use to transform ideas into reality.',
             frontend: 'Front-end',
             backend: 'Back-end',
@@ -224,6 +236,7 @@ const TRANSLATIONS = {
         contato: {
             title: 'Get in Touch',
             subtitle: "Let's talk!",
+            // eslint-disable-next-line max-len
             description: 'I am always open to new opportunities, collaborations and interesting conversations. If you have a project in mind, want to discuss technology or just exchange ideas, do not hesitate to get in touch!',
             quickContact: {
                 whatsapp: 'WhatsApp',
